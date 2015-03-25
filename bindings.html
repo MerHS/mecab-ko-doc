@@ -3,39 +3,39 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>スクリプト言語のバインディング</title>
+<title>스크립트 언어 바인딩</title>
 <link rel=stylesheet href="mecab.css">
 </head>
 <body>
 
-<h1>スクリプト言語のバインディング</h1>
+<h1>스크립트 언어 바인딩</h1>
 
 <h2>概要</h2>
 <p>
-各種スクリプト言語
+각종 스크립트 언어
 (<a href="http://www.perl.com">perl</a>, 
 <a href="http://www.ruby-lang.org">ruby</a>, 
 <a href="http://www.python.org">python</a>, 
 <a href="http://java.sun.com">Java</a>)
-から, MeCab が提供する形態素解析の機能を利用可能です.
-各バインディングは <a href="http://www.swig.org">SWIG</a> というプログラ
-ムを用いて, 自動生成されています. <a href="http://www.swig.org">SWIG</a> がサポートする他の言語も
-生成可能だと思われますが, 現在は, 作者の管理できる範囲内ということで, 
-上記の4つの言語のみを提供しております.
+로부터 MeCab이 제공하는 형태소분석 기능을 이용할 수 있습니다.
+각 바인딩은 <a href="http://www.swig.org">SWIG</a>으로 자동생성되었습니다.
+ <a href="http://www.swig.org">SWIG</a>가 서포트하는 다른 언어도
+생성할 수 있다고 생각하지만, 현재 작성자가 관리 가능한 범위내로
+위 4개 언어만 제공하고 있습니다.
 </p>
 
-<h2>インストール</h2>
+<h2>설치</h2>
 <p>
-各言語バイディングのインストール方法は, perl/README, ruby/README, python/README,
-java/README を御覧下さい.
+각 언어 바인딩의 설치는, perl/README, ruby/README, python/README,
+java/README 를 봐주십시오.
 </p>
 
-<h2>とりあえず解析する</h2>
+<h2>일단 분석한다.</h2>
 <p>
-MeCab::Tagger というクラスのインスタンスを生成し, parse (もしくは
-parseToString) というメソッドを呼ぶことで, 解析結果が文字列として取得できます.
-MeCab::Tagger のコンストラクタの引数は, 基本的に mecab の実行形式に与え
-るパラメータと同一で, それらを文字列として与えます.
+MeCab::Tagger 클래스의 인스턴스를 생성하여, parse (또는 
+parseToString) 메소드를 불러와, 분석결과를 문자열로 받습니다.
+MeCab::Tagger의 생성자 인수는 기본적으로 mecab의 실행형식에 전달하는 
+파라미터와 동일하며, 이를 문자열로 전달하면 됩니다.
 </p>
 
 <h3>perl</h3>
@@ -70,27 +70,26 @@ import org.chasen.mecab.Node
 }
 </pre>
 
-<h2>各形態素の詳細情報を取得する</h2>
+<h2>각 형태소의 상세정보를 받아오기</h2>
 <p>
-MeCab::Tagger クラスの, parseToNode という
-メソッドを呼ぶことで, 「文頭」という特別な形態素が MeCab::Node クラスのインスタンスとして
-取得できます.
+MeCab::Tagger 클래스의, parseToNode 메소드를 불러와
+'문두(文頭)'라 불리는 특별한 형태소 MeCab::Node 클래스의 인스턴스로
+받을 수 있습니다.
 </p>
 
 <p>
-MeCab::Node は, 双方向リストとして表現されており, next, prev というメン
-バ変数があります. それぞれ, 次の形態素, 前の形態素を MeCab::Node クラスのインスタンスとして
-返します. 全形態素には, next を順次呼ぶことでアクセスできます.
+MeCab::Node는, 이중 연결리스트로 표현되며, next, prev 멤버변수가 있습니다.
+각각 다음 형태소, 이전 형태소를 MeCab::Node 클래스의 인스턴스로써 돌려줍니다.
+모든 형태소는 next를 순차적으로 불러오는 것으로 접근이 가능합니다.
 </p>
 
-<p>MeCab::Node は C 言語のインタフェイスで提供している mecab_node_t をラッ
-プしたクラスです. mecab_node_t が持つほぼすべてのメンバ変数にアクセスす
-ることができます. ただし, surface のみ, 単語そのものが返るように変更して
-います.</p>
+<p>MeCab::Node C 언어의 인터페이스로 제공되는 mecab_node_t 을 wrap한 클래스입니다.
+mecab_node_t이 가진 거의 모든 멤버 변수에 접근 가능합니다. 
+하지만, surface나 단어 자체를 리턴할 수 있도록 변경하였습니다.</p>
 
 <p>
-以下に <a href="http://www.perl.com">perl</a> の例を示します. この例では, 
-各形態素を順次にアクセスし,形態素の表層文字列, 品詞, その形態素までのコストを表示します.
+아래에 <a href="http://www.perl.com">perl</a>의 예제가 있습니다. 이 예제는, 
+각 형태소를 순차적으로 접근하여 형태소의 표층문자열, 품사, 그 형태소까지의 코스트를 표시합니다..
 </p>
 
 <pre>
@@ -99,19 +98,19 @@ my $m = new MeCab::Tagger ("");
 
 for (my $n = $m->parseToNode ("今日もしないとね"); $n ; $n = $n-&gt;{next}) {
    printf ("%s\t%s\t%d\n",
-            $n-&gt;{surface},          # 表層
-	    $n-&gt;{feature},          # 現在の品詞
-	    $n-&gt;{cost}              # その形態素までのコスト
+            $n-&gt;{surface},          # 표층
+	    $n-&gt;{feature},          # 현재의 품사
+	    $n-&gt;{cost}              # 그 형태소까지의 코스트
 	    );
 }
 </pre>
 
-<h2>エラー処理</h2>
+<h2>에러 처리</h2>
 <p>
-もし, コンストラクタや, 解析途中でエラーが起きた場合は, 
-RuntimeError 例外が発生します. 
-例外のハンドリングの方法は, 各言語のリファレンスマニュアルを
-ごらんください. 以下は, <a href="http://www.python.org">python</a> の例です
+만약 생성자나 해석 도중에 에러가 일어난 경우,
+RuntimeError 예외가 발생합니다.
+예외처리 방법은 각 언어의 레퍼런스 매뉴얼을 봐주십시오.
+아래는 <a href="http://www.python.org">python</a> 예제입니다.
 </p>
 
 <pre>
@@ -123,31 +122,31 @@ except RuntimeError, e:
 </pre>
 
 
-<h2>注意事項</h2>
-<h3>文頭,文末形態素</h3>
+<h2>주의사항</h2>
+<h3>문두, 문미 형태소</h3>
 <p>
-    parseToNode の返り値は, 「文頭」という特別な形態素を示す MeCab::Node
-    インタンスです. さらに, 「文末」という特別な形態素も存在いたしますので,
-    注意してください. もし, これらを無視したい場合は, 以下のように
-    next でそれぞれを読み飛ばしてください.
+    parseToNode가 반환하는 값은, '문두'라고 하는 특별한 형태소를 가리키는 MeCab::Node
+    인스턴스입니다. 또한 '문미'라는 특별한 형태소도 존재하므로 주의해주십시오.
+    만약 이것들을 무시하고 싶은 경우에는 이하와 같이
+    next로 각각을 읽은 후 날려주십시오.
 <pre>
 my $n = $m-&gt;parseToNode ("今日もしないとね"); 
-$n = $n-&gt;{next}; # 「文頭」を無視
+$n = $n-&gt;{next}; # 문두를 무시
 
-while ($n-&gt;{next}) { # next を調べる
+while ($n-&gt;{next}) { # next를 조사한다.
   printf ("%s\n", $n-&gt;{surface});
-  $n = $n-&gt;{next}; # 次に移動
+  $n = $n-&gt;{next}; # 다음으로 이동
 }
 </pre>
    
 </p>
 
-<h3>MeCab::Node の振舞い</h3>
+<h3>MeCab::Node의 행동</h3>
 <p>
-MeCab::Node の実体(メモリ上にある形態素情報)は, 
-MeCab::Tagger インスタンスが管理しています. MeCab::Node は,
-Node の実体を指している<b>参照</b>にすぎせん. そのために, parseToNode が
-呼ばれる度に, 実体そのものが, 上書きされていきます. 以下のような例はソースの意図する通りには動きません.
+MeCab::Node의 본체(메모리 위에 올려진 형태소 정보)는 
+MeCab::Tagger 인스턴스가 관리합니다. MeCab::Node는
+Node의 본체를 가리키는<b>참조</b>에 불과합니다. 이를 위해, parseToNode를
+불러옴과 동시에 본체 그 자체가 덮어씌워집니다. 아래의 예는 코드가 의도한 대로 동작하지 않습니다.
 </p>
  
 <pre>
@@ -155,27 +154,27 @@ m = MeCab.Tagger ("")
 n1 = m.parseToNode ("今日もしないとね") 
 n2 = m.parseToNode ("さくさくさくら")
 
-# n1 の内容は無効になっている
+# n1의 내용은 무효화된다. 
 while (n1.hasNode () != 0):
    print n1.getSurface ()
    n1 = n1.next ()
 </pre>
 
 <p>
-上記の例では, n1 の指す中身が, 「さくさくさくら」を解析した時点で
-上書きされており, 使用できなくなっています. 
+위의 예에서는, n1이 가리키는 실체가 「さくさくさくら」를 해석한 시점에서
+덮어씌워지며, 사용이 가능하지 않게 됩니다.
 </p>
 
 <p>
-複数の Node を同時にアクセスしたい場合は, 複数の MeCab::Tagger インスタンスを生成してください.
+복수의 Node를 동시에 접근하고 싶은 경우엔 복수의 MeCab::Tagger 인스턴스를 생성해주십시오.
 </p>
 
-<h2>全メソッド</h2>
+<h2>모든 메소드</h2>
 <p>
-以下に, <a href="http://www.swig.org">SWIG</a>用のインタフェースファイル
-の一部を示します. バイディングの実装言語の都合上, C++ のシンタックスで
-表記されていますが, 適宜読みかえてください. また, 各メソッドの動作も添え
-ていますので参考にしてください.
+아래에 <a href="http://www.swig.org">SWIG</a>용 인터페이스 파일의
+일부를 표시하고 있습니다. 바인딩 구현언어의 사정상 C++ 문법으로
+표기하고 있습니다만 적당히 바꿔서 읽어주십시오. 또한 각 메소드의 동작을 첨부해 두었으므로
+참고해주십시오.
 </p>
 
 <pre>
@@ -183,27 +182,27 @@ namespace MeCab {
 
   class Tagger {
 
-     // str を解析して文字列として結果を得ます. len は str の長さ(省略可能)
+     // str을 해석하여 문자열로 결과를 얻습니다. len은 str의 길이(생략가)
      string parse(string str, int len);
   
-     // parse と同じ
+     // parse와 동일
      string parseToString(string str, int len);
   
-     // str を解析して MeCab::Node 型の形態素を返します. 
-     // この形態素は文頭を示すもので, next を順に辿ることで全形態素にアクセスできます
+     // str을 해석하여 MeCab::Node 형의 형태소를 반환합니다.
+     // 이 형태소는 문두를 가리키, next를 순서대로 탐색하는 것으로 모든 형태소에 접근할 수 있습니다.
      Node parseToNode(string str, int len);
   
-     // parse の Nbest 版です. N に nbest の個数を指定します.
-     // この機能を使う場合は, 起動時オプションとして -l 1 を指定する必要があります
+     // parse의 Nbest판 입니다. N을 nbest의 개수로 지정합니다.
+     // 이 기능을 사용하는 경우, 기동시 옵션으로 -l 1 을 사용할 필요가 있습니다.
      string parseNBest(int N, string str, int len);
   
-     // 解析結果を, 確からしいものから順番に取得する場合にこの関数で初期化を行います.
+     // 최적해에 가까운 순서대로 해석결과를 얻고자 하는 경우에 이 함수로 초기화를 합니다.
      bool  parseNBestInit(string str, int len);
   
-     // parseNbestInit() の後, この関数を順次呼ぶことで, 確からしい解析結果を, 順番に取得できます.
+     // parseNbestInit()의 실행 이후, 이 함수를 연속하여 부르는 것으로 최적해에 가까운 해석결과를 순서대로 얻습니다.
      string next();
   
-     // next() と同じですが, MeCab::Node を返します.
+     // next()와 동일하지만 MeCab::Node를 반환합니다.
      Node  nextNode();
   };
   
@@ -214,43 +213,43 @@ namespace MeCab {
   
   struct Node {
 
-    struct Node  prev;  // 一つ前の形態素へのポインタ
-    struct Node  next;  // 一つ先の形態素へのポインタ
+    struct Node  prev;  // 이전 형태소를 가리키는 포인터
+    struct Node  next;  // 다음 형태소를 가리키는 포인터
     
-    struct Node  enext; // 同じ位置で終わる形態素へのポインタ
-    struct Node  bnext; // 同じ開始位置で始まる形態素へのポインタ
+    struct Node  enext; // 같은 위치에서 끝나는 형태소를 가리키는 포인터
+    struct Node  bnext; // 같은 개시위치에서 시작하는 형태소를 가리키는 포인터
   
-    string surface;             // 形態素の文字列情報 
+    string surface;             // 형태소의 문자열 정보
   			      
-    string feature;             // CSV で表記された素性情報
-    unsigned int   length;      // 形態素の長さ
-    unsigned int   rlength;     // 形態素の長さ(先頭のスペースを含む)
-    unsigned int   id;          // 形態素に付与される ユニークID
-    unsigned short rcAttr;      // 右文脈 id 
-    unsigned short lcAttr;      // 左文脈 id
-    unsigned short posid;       // 形態素 ID (未使用)
-    unsigned char  char_type;   // 文字種情報
-    unsigned char  stat;        // 形態素の種類: 以下のマクロの値
+    string feature;             // CSV로 표기된 특정보
+    unsigned int   length;      // 형태소의 길이
+    unsigned int   rlength;     // 형태소의 길이 (맨앞의 공백 포함)
+    unsigned int   id;          // 형태소에 부여된 고유ID
+    unsigned short rcAttr;      // 오른쪽 문맥 id 
+    unsigned short lcAttr;      // 왼쪽 문맥 id
+    unsigned short posid;       // 형태소 ID (미사용)
+    unsigned char  char_type;   // 문자종 정보
+    unsigned char  stat;        // 형태소 종류: 아래의 매크로값
                                 // #define MECAB_NOR_NODE  0
                                 // #define MECAB_UNK_NODE  1
                                 // #define MECAB_BOS_NODE  2
                                 // #define MECAB_EOS_NODE  3
-    unsigned char  isbest;      // ベスト解の場合 1, それ以外 0
+    unsigned char  isbest;      // 최적해의 경우 1, 그 이외 0
   
-    float          alpha;       // forward backward の foward log 確率
-    float          beta;        // forward backward の backward log 確率 
-    float          prob;        // 周辺確率
-                                // alpha, beta, prob は -l 2 オプションを指定した時に定義されます
+    float          alpha;       // forward backward의 foward log 확률
+    float          beta;        // forward backward의 backward log 확률 
+    float          prob;        // 주변확률
+                                // alpha, beta, prob는 -l 2 옵션을 사용한 경우에 정의됩니다.
   
-    short          wcost;       // 単語生起コスト
-    long           cost;        // 累積コスト
+    short          wcost;       // 단어 발생 코스트
+    long           cost;        // 누적 코스
   };
 }
 </pre>
-<h2>サンプルプログラム</h2>
+<h2>샘플 프로그램</h2>
 <p>
 perl/test.pl, ruby/test.rb, python/test.py, java/test.java
-にそれぞれの言語のサンプルがありますので, 参考にしてください.
+에 있는 각각의 언어로 쓰여진 샘플을 참고해주십시오.
 </p>
 </body>
 </html>
