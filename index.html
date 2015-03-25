@@ -21,8 +21,8 @@ MeCab는<a href="http://pine.kuee.kyoto-u.ac.jp/KU-NTT-WS-2005/">
 교토대학 정보학 연구과−일본전신전화주식회사 커뮤니케이션 과학기초연구소
 공동연구 유닛프로젝트</a>를 통해 개발된 오픈소스
 형태소 분석엔진입니다. 언어, 사전, 말뭉치에 의존하지 않는 범용적인 설계를 
-기본 방침으로 하고 있습니다. 파라미터의 추정에는 Conditional Random Fields (<a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a>) 사용하고 있으며,
- <a href="http://chasen.naist.jp">ChaSen</a>이 채용되어 
+기본 방침으로 하고 있습니다. 파라미터의 추정에는 Conditional Random Fields (<a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a>)를 사용하고 있으며,
+ <a href="http://chasen.naist.jp">ChaSen</a>이 사용한 
 Hidden Markov model에 비해 성능이 우수하며, 평균적으로 
 <a href="http://chasen.naist.jp">ChaSen</a>, <a href="http://www.kc.t.u-tokyo.ac.jp/nl-resource/juman.html">Juman</a>,
 <a href="http://kakasi.namazu.org">KAKASI</a>보다 고속으로 작동합니다.
@@ -184,7 +184,7 @@ href="http://kakasi.namazu.org">KAKASI</a>에 비해 빠른 속도</li>
 
 </table>
 
-<p>MeCab에 다다르기 까지의 형태소 분석기 개발의 역사는 <a href="feature.html">이쪽</a>을 봐주시기 바랍니다.</li>
+<p>MeCab에 이르기까지의 형태소 분석기 개발의 역사는 <a href="feature.html">이쪽</a>을 봐주시기 바랍니다.</li>
 
 <h2>메일링 리스트</h2>
 <ul>
@@ -336,7 +336,7 @@ Lattice::set_feature_constraint) の追加
 <li><b>MeCab</b>은 프리 소프트웨어입니다.<a href="http://www.gnu.org/licenses/gpl.txt">GPL</a>(the GNU General Public
 License), <a href="http://www.gnu.org/licenses/lgpl.txt">LGPL</a>(Lesser GNU General Public License), 또는 BSD
 라이센스에 따라 본 소프트웨어를 사용, 재배포할 수 있습니다.
-상세는 COPYING, GPL, LGPL, BSD의 각 파일을 참조해주시길 바랍니다.
+자세한 내용은 COPYING, GPL, LGPL, BSD의 각 파일을 참조해주시길 바랍니다.
 
 <li><b>MeCab</b> 본체
 <h3><a name="source">Source</a></h3>
@@ -486,9 +486,9 @@ EOS
 <h3><a name="charset">인코딩 변경</a></h3>
 
 <p>특별히 지정되어있지 않은 한, euc를 사용하고 있습니다. 만약
-shift-jis나 utf8를 사용하지 않는 경우, 사전 configure옵션의 charset을 변경하여
-사전을 재구축하여 주십시오. 이로써 shift-jis나,
-utf8으로 사전을 작성할 수 있습니다.</p>
+shift-jis나 utf8을 사용하고자 하는 경우에는 사전 configure옵션의 charset을 변경하여
+사전을 재구축하여 주십시오. 이를 통해 shift-jis나,
+utf8로 사전을 작성할 수 있습니다.</p>
 
 <pre>
 % tar zxfv mecab-ipadic-2.7.0-xxxx
@@ -501,8 +501,8 @@ utf8으로 사전을 작성할 수 있습니다.</p>
 % make
 </pre>
 
-<p>또한, mecab-dict-index의 -t 옵션을 사용하여 직접 인코딩이 다른
-     사전을 재구축할 수 있습니다. -f 옵션은 오리지널 텍스트 사전의 인코딩입니다.
+<p>또한, mecab-dict-index의 -t 옵션을 사용하여 직접 다른 인코딩으로 이루어진
+     사전을 재구축할 수 있습니다. -f 옵션은 사전의 원래 텍스트 인코딩입니다.
 </p>
 <pre>
 % cd mecab-ipadic-2.7.0-xxxx
@@ -513,8 +513,8 @@ utf8으로 사전을 작성할 수 있습니다.</p>
 
 <h3><a name="utf-8">UTF-8 only mode</a></h3>
 <p>
-configure option에 --enable-utf8-only 을 지정하면, MeCab가 사용하는
-인코딩을 utf8로 고정합니다. euc-jp나 shift-jis를 지원하는 경우,
+configure option에 --enable-utf8-only를 지정하면, MeCab가 사용하는
+인코딩을 utf8로 고정합니다. euc-jp나 shift-jis를 사용하는 경우,
 MeCab 내부에 변환용 테이블을 끼워넣습니다. --enable-utf8-only 를
 지정하는 것으로 테이블이 추가되는 것을 억제하여, 결과적으로 실행 바이너리를 
 축소하는 것이 가능합니다.</p>
@@ -525,11 +525,11 @@ MeCab는 사전에 단어가 등록되지 않은 경우에도 적절히 품사�
 <pre>
 ホリエモン市	(* 호리에몬시 *)
 ホリエモン      名詞,固有名詞,地域,一般,*,*,*    (* 호리에몬  명사,고유명사,지역,일반,*,*,* *)
-市      名詞,接尾,地域,*,*,*,市,シ,シ 	(* 명사,접미,지역,*,*,*,시,시,시 *)
+市      名詞,接尾,地域,*,*,*,市,シ,シ 	(* 시  명사,접미,지역,*,*,*,시,시,시 *)
 EOS
 ホリエモンさん	(* 호리에몬상 *)
 ホリエモン      名詞,固有名詞,人名,一般,*,*,*    (* 호리에몬  명사,고유명사,인명,일반,*,*,* *)
-さん    名詞,接尾,人名,*,*,*,さん,サン,サン 	(*  명사,접미,인명,*,*,*,상,상,상 *)
+さん    名詞,接尾,人名,*,*,*,さん,サン,サン 	(* 씨  명사,접미,인명,*,*,*,상,상,상 *)
 </pre>
 <p>다만, 그다지 정확한 결과는 나오지 않습니다. 품사추정을 하지 않고, 미지어를
 "미지어" 품사로 출력하고 싶은 경우는 -x (--unk-feature) 옵션을 사용합니다.
@@ -571,8 +571,8 @@ EOS
 
 <h2><a name="thanks">감사의 말</a></h2>
 <p>
-CRF의 파라미터 추정에는 <a href="http://www.ece.nwu.edu/~nocedal">Jorge Nocedal</a>씨가 고안한 L-BFGS
-와 같은 분이 공개한 FORTRAN 구현을 사용하고 있습니다. 감사합니다.</p>
+CRF의 파라미터 추정에는 <a href="http://www.ece.nwu.edu/~nocedal">Jorge Nocedal</a>씨가 고안한 L-BFGS와,
+같은 분이 공개한 FORTRAN 구현을 사용하고 있습니다. 감사합니다.</p>
 
 <p><a
 href="http://www.ece.northwestern.edu/~nocedal/lbfgs.html">http://www.ece.northwestern.edu/~nocedal/lbfgs.html</a></p>
