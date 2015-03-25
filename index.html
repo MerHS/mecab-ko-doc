@@ -15,33 +15,35 @@ _uacct = "UA-395189-3";
 urchinTracker();
 </script>
 
-<h2>MeCab (和布蕪)とは</h2>
+<h2>MeCab (메카부)란</h2>
 <p>
-MeCabは<a href="http://pine.kuee.kyoto-u.ac.jp/KU-NTT-WS-2005/">
-교토대학情報学研究科−日本電信電話株式会社コミュニケーション科学基礎研究所
-共同研究ユニットプロジェクト</a>を通じて開発されたオープンソース
-形態素解析エンジンです。 言語, 辞書,コーパスに依存しない汎用的な設計を
-基本方針としています。 パラメータの推定に Conditional Random Fields (<a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a>) を用
-いており, <a href="http://chasen.naist.jp">ChaSen</a>が採用している
-隠れマルコフモデルに比べ性能が向上しています。また、平均的に
+MeCab는<a href="http://pine.kuee.kyoto-u.ac.jp/KU-NTT-WS-2005/">
+교토대학 정보학 연구과−일본전신전화주식회사 커뮤니케이션 과학기초연구소
+공동연구 유닛프로젝트</a>를 통해 개발된 오픈소스
+형태소 분석엔진입니다. 언어, 사전, 말뭉치에 의존하지 않는 범용적인 설계를 
+기본 방침으로 하고 있습니다. 파라미터의 추정에는 Conditional Random Fields (<a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a>) 사용하고 있으며,
+ <a href="http://chasen.naist.jp">ChaSen</a>이 채용되어 
+Hidden Markov model에 비해 성능이 우수하며, 평균적으로 
 <a href="http://chasen.naist.jp">ChaSen</a>, <a href="http://www.kc.t.u-tokyo.ac.jp/nl-resource/juman.html">Juman</a>,
-<a href="http://kakasi.namazu.org">KAKASI</a>より高速に動作します。
-ちなみに和布蕪(めかぶ)は, 作者の好物です。
+<a href="http://kakasi.namazu.org">KAKASI</a>보다 고속으로 작동합니다.
+참고로 미역(*일본어로 메카부*)은 제작자가 좋아하는 음식입니다.
+
+(* 별자가 붙은 문장은 역자 주석입니다. *)
 </p>
 </ul>
-<h2>目次</h2>
+<h2>목차</h2>
 <ul>
-<li><a href="#feature">特徴</a></li>
+<li><a href="#feature">특징</a></li>
 
-<li><a href="#diff">比較</a></li>
+<li><a href="#diff">비교</a></li>
 
-<li><a href="#news">新着情報</a></li>
+<li><a href="#news">최신정보</a></li>
 
-<li><a href="feature.html">開発までの経緯</a></li>
+<li><a href="feature.html">개발하게 된 경위</a></li>
 
-<li><a href="#download">ダウンロード</a></li>
+<li><a href="#download">다운로드</a></li>
 
-<li><a href="#install">インストール</a>
+<li><a href="#install">설치</a>
 
 <ul>
 <li><a href="#install-unix">Unix</a></li>
@@ -49,44 +51,44 @@ MeCabは<a href="http://pine.kuee.kyoto-u.ac.jp/KU-NTT-WS-2005/">
 </ul>
 </li>
 
-<li><a href="#usage-tools">使い方</a>
+<li><a href="#usage-tools">사용법</a>
 
 <ul>
-<li><a href="#parse">とりあえず解析する</a></li>
-<li><a href="#wakati">わかち書きをする</a></li>
-<li><a href="#format">出力フォーマットの変更</a>
+<li><a href="#parse">일단 분석해본다</a></li>
+<li><a href="#wakati">띄어쓰기를 한다</a></li>
+<li><a href="#format">출력 포맷의 변경</a>
 </ul>
-<li><a href="#usage-tools2">高度な使い方</a>
+<li><a href="#usage-tools2">고급 사용법</a>
 <ul>
-<li><a href="#charset">文字コードの変更</a></li>
-<li><a href="#nbest">N-Best 解の出力</a></li>
-<li><a href="dic.html">単語の追加方法</a></li>
-<li><a href="format.html">出力フォーマットの詳細定義</a></li>
-<li><a href="posid.html">品詞IDの定義</a></li>
-<li><a href="partial.html">制約付き解析(部分解析)</a></li>
-<li><a href="soft.html">ソフトわかち書き</a></li>
-<li><a href="libmecab.html">C/C++ ライブラリインタフェース</a> </li>
-<li><a href="mecab.html">その他のコマンドラインオプション</a></li>
-<li><a href="dic-detail.html">MeCab の辞書構造と汎用テキスト変換ツールとしての利用</a></li>
-<li><a href="unk.html">未知語処理の再定義</a></li>
- <li><a href="learn.html">オリジナル辞書/コーパスからのパラメータ推定</a></li>
+<li><a href="#charset">인코딩 변경</a></li>
+<li><a href="#nbest">N-Best 해의 출력</a></li>
+<li><a href="dic.html">단어의 추가 방법</a></li>
+<li><a href="format.html">출력 포맷의 상세 정의</a></li>
+<li><a href="posid.html">품사 ID의 정의</a></li>
+<li><a href="partial.html">제약을 추가한 해석(부분해석)</a></li>
+<li><a href="soft.html">소프트 띄어쓰기</a></li>
+<li><a href="libmecab.html">C/C++ 라이브러리 인터페이스</a> </li>
+<li><a href="mecab.html">기타 커맨드라인 옵션</a></li>
+<li><a href="dic-detail.html">MeCab의 사전구조를 범용 텍스트 변환툴로 이용하기</a></li>
+<li><a href="unk.html">미지어 처리의 재정의</a></li>
+ <li><a href="learn.html">오리지널 사전/말뭉치로 부터 파라미터 추정</a></li>
 
-<li><a href="bindings.html">スクリプト言語(perl/ruby/python/Java) バインディング</a></li>
+<li><a href="bindings.html">스크립트 언어(perl/ruby/python/Java) 바인딩</a></li>
 </ul>
-<li><a href="#thanks">謝辞</a></li>
+<li><a href="#thanks">감사의 말</a></li>
 </ul>
 
-<h2><a name="feature">特徴</a></h2>
+<h2><a name="feature">특징</a></h2>
 
 <ul>
-<li>辞書, コーパスに依存しない汎用的な設計</li>
-<li>条件付き確率場(<a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a>)に基づく高い解析精度
-<li><a href="http://chasen.naist.jp">ChaSen</a> や <a
-href="http://kakasi.namazu.org">KAKASI</a> に比べ高速</li>
-<li>辞書引きアルゴリズム/データ構造に, 高速な TRIE 構造である
-    <a href="http://cl.naist.jp/~taku-ku/software/darts">Double-Array</a>を採用.
-<li>再入可能なライブラリ</li>
-<li>各種スクリプト言語バインディング(perl/ruby/python/java/C#)</li>
+<li>사전, 말뭉치에 의존하지 않는 범용적인 설계</li>
+<li>조건부 확률장(<a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a>)에 기초한 고도의 해석
+<li><a href="http://chasen.naist.jp">ChaSen</a> 이나 <a
+href="http://kakasi.namazu.org">KAKASI</a>에 비해 빠른 속도</li>
+<li>사전 검색 알고리즘/데이터 구조에, 고속 TRIE 구조인 
+    <a href="http://cl.naist.jp/~taku-ku/software/darts">Double-Array</a>의 채용
+<li>재입력 가능한 라이브러리</li>
+<li>각종 스크립트 언어 바인딩(perl/ruby/python/java/C#)</li>
 </ul>
 
 <h2><a name="diff">比較</a></h2>
@@ -101,98 +103,98 @@ href="http://kakasi.namazu.org">KAKASI</a> に比べ高速</li>
 </tr>
 
 <tr class="odd">
-<td align="center">解析モデル</td>
-<td align="center">bi-gram マルコフモデル</td>
-<td align="center">可変長マルコフモデル</td>
-<td align="center">bi-gram マルコフモデル</td>
-<td align="center">最長一致</td>
+<td align="center">해석 모델</td>
+<td align="center">bi-gram 마르코프 모델</td>
+<td align="center">가변장 마르코프 모델</td>
+<td align="center">bi-gram 마르코프 모델</td>
+<td align="center">최장 일치</td>
 </tr>
 
 <tr class="even">
-<td align="center">コスト推定</td>
-<td align="center">コーパスから学習</td>
-<td align="center">コーパスから学習</td>
-<td align="center">人手</td>
-<td align="center">コストという概念無し</td>
+<td align="center">코스트 추정</td>
+<td align="center">말뭉치로부터 학습</td>
+<td align="center">말뭉치로부터 학습</td>
+<td align="center">수작업</td>
+<td align="center">코스트란 개념이 없음</td>
 </tr>
 
 <tr class="odd">
-<td align="center">学習モデル</td>
-<td align="center"><a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a> (識別モデル)</td>
-<td align="center">HMM (生成モデル)</td>
+<td align="center">학습 모델</td>
+<td align="center"><a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a> (식별모델)</td>
+<td align="center">HMM (생성모델)</td>
 <td align="center"></td>
 <td align="center"></td>
 </tr>
 
 <tr class="even">
-<td align="center">辞書引きアルゴリズム</td>
+<td align="center">사전 검색 알고리즘</td>
 <td align="center">Double Array</td>
 <td align="center">Double Array</td>
-<td align="center">パトリシア木</td>
+<td align="center">패트리시아 트</td>
 <td align="center">Hash?</td>
 </tr>
 
 <tr class="odd">
-<td align="center">解探索アルゴリズム</td>
+<td align="center">답안 탐색 알고리즘</td>
 <td align="center">Viterbi</td>
 <td align="center">Viterbi</td>
 <td align="center">Viterbi</td>
-<td align="center">決定的?</td>
+<td align="center">결정적?</td>
 </tr>
 
 <tr class="even">
-<td align="center">連接表の実装</td>
-<td align="center">2次元 Table</td>
-<td align="center">オートマトン</td>
-<td align="center">2次元 Table?</td>
-<td align="center">連接表無し?</td>
+<td align="center">연접표의 구현</td>
+<td align="center">2차원 Table</td>
+<td align="center">오토마톤</td>
+<td align="center">2차원 Table?</td>
+<td align="center">연접표 없음?</td>
 </tr>
 
 <tr class="odd">
-<td align="center">品詞の階層</td>
-<td align="center">無制限多階層品詞</td>
-<td align="center">無制限多階層品詞</td>
-<td align="center">2段階固定</td>
-<td align="center">品詞という概念無し?</td>
+<td align="center">품사의 계층</td>
+<td align="center">무제한 다계층 품사</td>
+<td align="center">무제한 다계층 품사</td>
+<td align="center">2단계 고정</td>
+<td align="center">품사란 개념 없음?</td>
 </tr>
 
 <tr class="even">
-<td align="center">未知語処理</td>
-<td align="center">字種 (動作定義を変更可能)</td>
-<td align="center">字種 (変更不可能)</td>
-<td align="center">字種 (変更不可能)</td>
+<td align="center">미지어 처리</td>
+<td align="center">字種(자종) (동작정의 변경가능)</td>
+<td align="center">字種 (변경불가능)</td>
+<td align="center">字種 (변경불가능)</td>
 <td align="center"></td>
 </tr>
 
 <tr class="odd">
-<td align="center">制約つき解析</td>
-<td align="center">可能</td>
-<td align="center">2.4.0で可能</td>
-<td align="center">不可能</td>
-<td align="center">不可能</td>
+<td align="center">제약을 추가한 해석</td>
+<td align="center">가능</td>
+<td align="center">2.4.0부터 가능</td>
+<td align="center">불가능</td>
+<td align="center">불가능</td>
 </tr>
 
 <tr class="even">
-<td align="center">N-best解</td>
-<td align="center">可能</td>
-<td align="center">不可能</td>
-<td align="center">不可能</td>
-<td align="center">不可能</td>
+<td align="center">N-best해</td>
+<td align="center">가능</td>
+<td align="center">불가능</td>
+<td align="center">불가능</td>
+<td align="center">불가능</td>
 </tr>
 
 </table>
 
-<p>MeCab に至るまでの形態素解析器開発の歴史等は<a href="feature.html">こちら</a>をご覧ください</li>
+<p>MeCab에 다다르기 까지의 형태소 분석기 개발의 역사는 <a href="feature.html">이쪽</a>을 봐주시기 바랍니다.</li>
 
-<h2>メーリングリスト</h2>
+<h2>메일링 리스트</h2>
 <ul>
 <li><a href="http://lists.sourceforge.jp/mailman/listinfo/mecab-users">
-    一般ユーザ向けメーリングリスト</a>
+    일반 유저용 메일링 리스트</a>
 <li><a href="http://lists.sourceforge.jp/mailman/listinfo/mecab-devel">
-    開発者向けメーリングリスト</a>
+    개발자용 메일링 리스트</a>
 </ul>
 
-<h2><a name="news">新着情報</a></h2>
+<h2><a name="news">최신 정보</a></h2>
 <ul>
  <li><strong>2013-02-18</strong> MeCab 0.996<br>
    <ul>
@@ -328,69 +330,69 @@ Lattice::set_feature_constraint) の追加
      </ul>
      </ul>
 
-<h2><a name="download">ダウンロード</a></h2>
+<h2><a name="download">다운로드</a></h2>
 
 <ul>
-<li><b>MeCab</b> はフリーソフトウェアです．<a href="http://www.gnu.org/licenses/gpl.txt">GPL</a>(the GNU General Public
-License), <a href="http://www.gnu.org/licenses/lgpl.txt">LGPL</a>(Lesser GNU General Public License), または BSD
-ライセンスに従って本ソフトウェアを使用,再配布することができます。
-詳細は COPYING, GPL, LGPL, BSD各ファイルを参照して下さい．
+<li><b>MeCab</b>은 프리 소프트웨어입니다.<a href="http://www.gnu.org/licenses/gpl.txt">GPL</a>(the GNU General Public
+License), <a href="http://www.gnu.org/licenses/lgpl.txt">LGPL</a>(Lesser GNU General Public License), 또는 BSD
+라이센스에 따라 본 소프트웨어를 사용, 재배포할 수 있습니다.
+상세는 COPYING, GPL, LGPL, BSD의 각 파일을 참조해주시길 바랍니다.
 
-<li><b>MeCab</b> 本体
+<li><b>MeCab</b> 본체
 <h3><a name="source">Source</a></h3>
 <ul>
 <li>mecab-0.996.tar.gz:<a href="http://code.google.com/p/mecab/downloads/detail?name=mecab-0.996.tar.gz">ダウンロード</a>
-<li>辞書は含まれていません. 動作には別途辞書が必要です。
+<li>사전은 포함되어 있지 않습니다. 작동에는 별도로 사전이 필요합니다.
 </ul>
 
 <h3><a name="win">Binary package for MS-Windows</a></h3>
 <ul>
-<li>mecab-0.996.exe:<a href="http://code.google.com/p/mecab/downloads/detail?name=mecab-0.996.exe">ダウンロード</a>
-<li>Windows 版には コンパイル済みの IPA 辞書が含まれています</a>
+<li>mecab-0.996.exe:<a href="http://code.google.com/p/mecab/downloads/detail?name=mecab-0.996.exe">다운로드</a>
+<li>Windows판에는 컴파일이 끝난 IPA사전이 포함되어 있습니다.</a>
 </li>
 
 </ul>
 
-<li><b>MeCab</b> 用の辞書
-<h3>IPA 辞書</h3>
+<li><b>MeCab</b>용의 사전 (*일본어*)
+<h3>IPA 사전</h3>
 <ul>
-<li>IPA 辞書, IPAコーパス に基づき
+<li>IPA 사전, IPA 말뭉치에 기초하여
     <a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a>
-でパラメータ推定した辞書です。 <b>(推奨)</b> <a
-href="http://code.google.com/p/mecab/downloads/detail?name=mecab-ipadic-2.7.0-20070801.tar.gz">ダウンロード</a></li>
+로 파라미터를 추정한 사전입니다. <b>(추천)</b> <a
+href="http://code.google.com/p/mecab/downloads/detail?name=mecab-ipadic-2.7.0-20070801.tar.gz">다운로드</a></li>
 </ul>
 
-<h3>Juman 辞書</h3>
+<h3>Juman 사전</h3>
 <ul>
-<li>Juamn 辞書, 京都コーパスに基づき
+<li>Juman 사전, 교토 말뭉치에 기초하여
     <a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a>
-でパラメータ推定した辞書です。 <a href="http://code.google.com/p/mecab/downloads/detail?name=mecab-jumandic-5.1-20070304.tar.gz">ダウンロード</a></li>
+로 파라미터를 추정한 사전입니다. <a href="http://code.google.com/p/mecab/downloads/detail?name=mecab-jumandic-5.1-20070304.tar.gz">다운로드</a></li>
 </ul>
 
-<h3>Unidic 辞書</h3>
+<h3>Unidic 사전</h3>
 <ul>
-<li>Unidic 辞書, BCCWJコーパスに基づき    <a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a>
-でパラーメータ推定した辞書です。<a href="http://www.tokuteicorpus.jp/dist/">ダウンロード</a></li>
+<li>Unidic 사전, BCCWJ 말뭉치에 기초하여    <a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf">CRF</a>
+로 파라미터를 추정한 사전입니다. <a href="http://www.tokuteicorpus.jp/dist/">다운로드</a></li>
 </ul>
 
-<li><a name="script"><b>perl/ruby/python/java バインディング</b></a>
+<li><a name="script"><b>perl/ruby/python/java 바인딩</b></a>
 <ul>
-<li> <a href="http://code.google.com/p/mecab/downloads/list">ダウンロード</a>
+<li> <a href="http://code.google.com/p/mecab/downloads/list">다운로드</a>
 </ul>
 </ul>
 </ul>
 
-<h2><a name="install">インストール</a></h2>
+<h2><a name="install">설치</a></h2>
 <h3><a name="install-unix">UNIX</a></h3>
 
 <ul>
-<li>動作に必要なもの
+<li>작동에 필요한 요소
 <ul>
-<li>C++ コンパイラ (g++ 3.4.3 と VC7 でのコンパイルを確認しています)</li>
-<li>iconv (libiconv): 辞書のコード変換に使います</li>
+<li>C++ 컴파일러 (g++ 3.4.3과 VC7컴파일러에서의 작동이 확인되어 있습니다.)</li>
+<li>iconv (libiconv): 사전 코드의 변환에 사용됩니다.</li>
 </ul>
-<li>インストール手順
-<p>一般的なフリーソフトウェアと同じ手順でインストールできます。</p>
+<li>설치 순서
+<p>일반적인 프리 소프트웨어와 같은 순서로 설치가 가능합니다.</p>
 <pre>
  % tar zxfv mecab-X.X.tar.gz
  % cd mecab-X.X
@@ -402,7 +404,7 @@ href="http://code.google.com/p/mecab/downloads/detail?name=mecab-ipadic-2.7.0-20
 </pre>
 </li>
 
-<p>辞書のインストール</p>
+<p>사전의 설치</p>
 <pre>
 % tar zxfv mecab-ipadic-2.7.0-XXXX.tar.gz
 % mecab-ipadic-2.7.0-XXXX
@@ -415,81 +417,78 @@ href="http://code.google.com/p/mecab/downloads/detail?name=mecab-ipadic-2.7.0-20
 </ul>
 
 <h3><a name="install-windows">Windows</a></h3>
-<p>バイナリをインストールする場合は,
-自己解凍インストーラ (mecab-X.X.exe)
-を実行してください. 辞書も同時にインストールされます。</p>
+<p>바이너리를 통해 설치하는 경우,
+자기해동 인스톨러 (mecab-X.X.exe)
+를 실행해주십시오. 사전도 동시에 설치됩니다.</p>
 
-<h2><a name="usage-tools">使い方</a></h2>
-<h3><a name="parse">とりあえず解析してみる</a></h3>
+<h2><a name="usage-tools">사용법</a></h2>
+<h3><a name="parse">일단 분석해본다.</a></h3>
 
-<p>mecab を起動して,
-生文を標準入力から入力してみてください.MeCab では, 一行一文を前提として解析を行ないます。</p>
+<p>mecab을 기동하고,
+문장을 표준입력(*standard input*)으로 입력해주십시오. MeCab은 한 라인당 한 문장임을 전제로 해석이 이루어집니다.</p>
 
 <pre>
 % mecab
-すもももももももものうち
-すもも  名詞,一般,*,*,*,*,すもも,スモモ,スモモ
-も      助詞,係助詞,*,*,*,*,も,モ,モ
-もも    名詞,一般,*,*,*,*,もも,モモ,モモ
-も      助詞,係助詞,*,*,*,*,も,モ,モ
-もも    名詞,一般,*,*,*,*,もも,モモ,モモ
-の      助詞,連体化,*,*,*,*,の,ノ,ノ
-うち    名詞,非自立,副詞可能,*,*,*,うち,ウチ,ウチ
+すもももももももものうち 	                 (* 스모모모모모모모모노우치, 유명한 일본어 말장난입니다. *)
+すもも  名詞,一般,*,*,*,*,すもも,スモモ,スモモ    (* 자두    명사,일반,*,*,*,*,스모모(한자),스모모(히라가나),스모모(가타카나) *)
+も      助詞,係助詞,*,*,*,*,も,モ,モ   	 (* 도     조사,관계사,*,*,*,*,모,모,모 *)
+もも    名詞,一般,*,*,*,*,もも,モモ,モモ 	 (* 복숭아  명사,일반,*,*,*,*,모모,모모,모모 *)
+も      助詞,係助詞,*,*,*,*,も,モ,モ   	 (* 도     조사,관계사,*,*,*,*,모,모,모 *)
+もも    名詞,一般,*,*,*,*,もも,モモ,モモ 	 (* 복숭아  명사,일반,*,*,*,*,모모,모모,모모 *)
+の      助詞,連体化,*,*,*,*,の,ノ,ノ   	 (* 의     조사,연체화,*,*,*,*,노,노,노 *)
+うち    名詞,非自立,副詞可能,*,*,*,うち,ウチ,ウチ  (* 편    명사,비자립,부사가능,*,*,*,우치,우치,우치 *)
 EOS
 </pre>
 
 <p>
-出力フォーマットは, ChaSen のそれと大きく異なります。
-左から, </p>
+출력 포맷은 ChaSen과는 상당히 다른 형태를 취하고 있습니다.
+왼쪽부터, </p>
 
 <pre>
-表層形\t品詞,品詞細分類1,品詞細分類2,品詞細分類3,活用形,活用型,原形,読み,発音
+표층형\t품사,품사세분류1,품사세분류2,품사세분류3,활용형,활용형,원형,독음,발음
 </pre>
 
-<p>となっています。 </p>
+<p>로 되어있습니다. </p>
 
-<p>引数にファイルを与えると,
-そのファイルが解析対象となります。 また, -o
-オプションにて,
-別のファイルに結果を出力することも可能です。</p>
+<p>인풋값에 파일을 넣으면
+그 파일이 해석대상이 됩니다. 또한 -o 옵션으로 다른 파일에 분석결과를 출력할 수 있습니다.</p>
 
 <pre>
 % mecab INPUT -o OUTPUT
 </pre>
 
-<h3><a name="wakati">わかち書きをする</a></h3>
+<h3><a name="wakati">띄어쓰기를 한다</a></h3>
 
-<p>以下のように -O オプションを使います。</p>
+<p>이하와 같이 -O 옵션을 씁니다.</p>
 
 <pre>
 % mecab -O wakati
-太郎はこの本を二郎を見た女性に渡した。
-太郎 は この 本 を 二郎 を 見 た 女性 に 渡し た 。
+太郎はこの本を二郎を見た女性に渡した。 		  (* 타로는이책을지로를봤던여성에게전했다. *)
+太郎 は この 本 を 二郎 を 見 た 女性 に 渡し た 。 (* 타로 는 이 책 을 지로 를 봐 ㅆ던 여성 에게 전해 ㅆ다 *)
 </pre>
 
-<h3><a name="format">出力フォーマットの変更</a></h3>
+<h3><a name="format">출력 포맷의 변경</a></h3>
 
-<p>以下のように -O オプションを使います。</p>
+<p>이하와 같이 -O 옵션을 씁니다.</p>
 
 <pre>
-% mecab -Oyomi (ヨミ付与)
-% mecab -Ochasen (ChaSen互換)
-% mecab -Odump (全情報を出力)
+% mecab -Oyomi (요미가나 부착)
+% mecab -Ochasen (ChaSen호환)
+% mecab -Odump (모든 정보 출력)
 </pre>
 
 <p>
-これらの出力フォーマットは, /usr/local/lib/mecab/ipadic/dicrc
-に定義されています。 さらに,
-ユーザがこれらのフォーマットを自由に定義することが可能です。
-<a href="format.html">こちら</a>をご覧ください.</p>
+출력 포맷은 /usr/local/lib/mecab/ipadic/dicrc
+에 정의되어있습니다. 또한 유저가 자유롭게 사용자 정의 포맷을 추가할 수 있습니다.
+<a href="format.html">이 쪽</a>을 보아주십시오.</p>
 
-<h2><a name="usage-tools2">高度な使い方</a></h2>
-<h3><a name="charset">文字コード変更</a></h3>
+<h2><a name="usage-tools2">고급 사용법</a></h2>
+<h3><a name="charset">인코딩 변경</a></h3>
 
-<p>特に指定しない限り, euc が使用されます。 もし,
-shift-jis や utf8 を 使いたい場合は, 辞書の configure オプションにて charset を変更し,
-辞書を再構築してください. これで, shift-jis や,
-utf8 の辞書が作成されます。</p>
+<p>특별히 지정되어있지 않은 한, euc를 사용하고 있습니다. 만약
+shift-jis나 utf8를 사용하지 않는 경우, 사전 configure옵션의 charset을 변경하여
+사전을 재구축하여 주십시오. 이로써 shift-jis나,
+utf8으로 사전을 작성할 수 있습니다.</p>
 
 <pre>
 % tar zxfv mecab-ipadic-2.7.0-xxxx
@@ -502,8 +501,8 @@ utf8 の辞書が作成されます。</p>
 % make
 </pre>
 
-<p>また, mecab-dict-index の -t オプションを使って直接文字コードの異なる
-     辞書を再構築できます。 -f オプションはオリジナルのテキスト辞書の文字コードです。
+<p>또한, mecab-dict-index의 -t 옵션을 사용하여 직접 인코딩이 다른
+     사전을 재구축할 수 있습니다. -f 옵션은 오리지널 텍스트 사전의 인코딩입니다.
 </p>
 <pre>
 % cd mecab-ipadic-2.7.0-xxxx
@@ -514,66 +513,66 @@ utf8 の辞書が作成されます。</p>
 
 <h3><a name="utf-8">UTF-8 only mode</a></h3>
 <p>
-configure option で --enable-utf8-only を指定すると. MeCab が扱う
-文字コードを utf8 に固定します。 euc-jp や shift-jis をサポートする場合,
-MeCab 内部に変換用のテーブルを埋めこみます。 --enable-utf8-only を
-指定することでテーブルの埋めこみを抑制し, 結果として実行バイナリを
-小さくすることができます。</p>
+configure option에 --enable-utf8-only 을 지정하면, MeCab가 사용하는
+인코딩을 utf8로 고정합니다. euc-jp나 shift-jis를 지원하는 경우,
+MeCab 내부에 변환용 테이블을 끼워넣습니다. --enable-utf8-only 를
+지정하는 것으로 테이블이 추가되는 것을 억제하여, 결과적으로 실행 바이너리를 
+축소하는 것이 가능합니다.</p>
 
-<h3><a name="unk">未知語推定</a></h3>
+<h3><a name="unk">미지어 추정</a></h3>
 <p>
-MeCab は, 辞書に単語が未登録の場合でも適当にその品詞を推定します。 </p>
+MeCab는 사전에 단어가 등록되지 않은 경우에도 적절히 품사를 추정합니다. </p>
 <pre>
-ホリエモン市
-ホリエモン      名詞,固有名詞,地域,一般,*,*,*
-市      名詞,接尾,地域,*,*,*,市,シ,シ
+ホリエモン市	(* 호리에몬시 *)
+ホリエモン      名詞,固有名詞,地域,一般,*,*,*    (* 호리에몬  명사,고유명사,지역,일반,*,*,* *)
+市      名詞,接尾,地域,*,*,*,市,シ,シ 	(* 명사,접미,지역,*,*,*,시,시,시 *)
 EOS
-ホリエモンさん
-ホリエモン      名詞,固有名詞,人名,一般,*,*,*
-さん    名詞,接尾,人名,*,*,*,さん,サン,サン
+ホリエモンさん	(* 호리에몬상 *)
+ホリエモン      名詞,固有名詞,人名,一般,*,*,*    (* 호리에몬  명사,고유명사,인명,일반,*,*,* *)
+さん    名詞,接尾,人名,*,*,*,さん,サン,サン 	(*  명사,접미,인명,*,*,*,상,상,상 *)
 </pre>
-<p>ただし, その精度は正確ではありません. 品詞推定をやめ, 未知語は常に
-"未知語" 品詞を出力したい場合は -x (--unk-feature) オプションを使います。
-オプションで指定された文字列が品詞として使われます。</p>
+<p>다만, 그다지 정확한 결과는 나오지 않습니다. 품사추정을 하지 않고, 미지어를
+"미지어" 품사로 출력하고 싶은 경우는 -x (--unk-feature) 옵션을 사용합니다.
+옵션으로 주어진 문자열이 품사로써 사용됩니다.</p>
 </p>
-<pre>%mecab --unk-feature "未知語"
-ホリエモンさん
-ホリエモン      未知語
-さん    名詞,接尾,人名,*,*,*,さん,サン,サン
+<pre>%mecab --unk-feature "미지어"
+ホリエモンさん				(* 호리에몬상 *)
+ホリエモン      未知語 			(* 호리에몬  미지어)
+さん    名詞,接尾,人名,*,*,*,さん,サン,サン	(* 씨  명사,접미,인명,*,*,*,상,상,상 *)
 </pre>
 </p>
 
-<h3><a name="nbest">N-Best 解の出力</a></h3>
+<h3><a name="nbest">N-Best 해의 출력</a></h3>
 <p>
--N #NUM オプションを使うことで, 確からしいものから#NUM 個解析結果を出力
-します。 理論的にはすべての可能な解析解を出力することが
-可能ですが, 出力バッファのかねあいから, -N の最大値を 512 に制限しています。
+-N #NUM 옵션은 가장 정확한 해부터 시작해 #NUM 개의 해석결과를 출력합니다.
+이론적으로는 모든 가능한 해석해를 출력하는 것이 가능합니다만, 
+출력버퍼의 제한으로 -N 의 크기는 512로 제한되어 있습니다.
 </p>
 
 <pre>
 % mecab -N2
-今日もしないとね。
-今日    名詞,副詞可能,*,*,*,*,今日,キョウ,キョー
-も      助詞,係助詞,*,*,*,*,も,モ,モ
-し      動詞,自立,*,*,サ変・スル,未然形,する,シ,シ
-ない    助動詞,*,*,*,特殊・ナイ,基本形,ない,ナイ,ナイ
-と      助詞,接続助詞,*,*,*,*,と,ト,ト
-ね      助詞,終助詞,*,*,*,*,ね,ネ,ネ
-。      記号,句点,*,*,*,*,。,。,。
+今日もしないとね。					(* 쿄우모시나이토네 *)
+今日    名詞,副詞可能,*,*,*,*,今日,キョウ,キョー     	(* 오늘  명사,부사가능,*,*,*,*,금일,쿄우,쿄- *)
+も      助詞,係助詞,*,*,*,*,も,モ,モ  		(* 도  부사,관계사,*,*,*,*,모,모,모 *)
+し      動詞,自立,*,*,サ変・スル,未然形,する,シ,シ    	(* 하지 동사,자립,*,*,사행・변,미연형,스루,시,시 *)
+ない    助動詞,*,*,*,特殊・ナイ,基本形,ない,ナイ,ナイ  	(* 않  조동사,*,*,*,특수・않다,기본형,나이,나이,나이 *)
+と      助詞,接続助詞,*,*,*,*,と,ト,ト  		(* 으면  조사,접속조사,*,*,*,*,토,토,토 *)
+ね      助詞,終助詞,*,*,*,*,ね,ネ,ネ  		(* 말야  조사,종조사,*,*,*,*,네,네,네 *)
+。      記号,句点,*,*,*,*,。,。,。  			(* 。  기호,마침표,*,*,*,*,.,.,. *)
 EOS
-今日    名詞,副詞可能,*,*,*,*,今日,キョウ,キョー
-もし    副詞,一般,*,*,*,*,もし,モシ,モシ
-ない    形容詞,自立,*,*,形容詞・アウオ段,基本形,ない,ナイ,ナイ
-と      助詞,接続助詞,*,*,*,*,と,ト,ト
-ね      助詞,終助詞,*,*,*,*,ね,ネ,ネ
-。      記号,句点,*,*,*,*,。,。,。
+今日    名詞,副詞可能,*,*,*,*,今日,キョウ,キョー  	  (* 오늘  명사,부사가능,*,*,*,*,금일,쿄우,쿄- *)
+もし    副詞,一般,*,*,*,*,もし,モシ,モシ  		  (* 만약  부사,일반,*,*,*,*,모시,모시,모시 *)
+ない    形容詞,自立,*,*,形容詞・アウオ段,基本形,ない,ナイ,ナイ  (* 없  형용사,자립,*,*,형용사・아우오단,나이,나이,나이 *)
+と      助詞,接続助詞,*,*,*,*,と,ト,ト  		  (* 으면  조사,접속조사,*,*,*,*,토,토,토 *)
+ね      助詞,終助詞,*,*,*,*,ね,ネ,ネ  		  (* 말야  조사,종조사,*,*,*,*,네,네,네 *)
+。      記号,句点,*,*,*,*,。,。,。  			  (* 。  기호,마침표,*,*,*,*,.,.,. *)
 EOS
 </pre>
 
-<h2><a name="thanks">謝辞</a></h2>
+<h2><a name="thanks">감사의 말</a></h2>
 <p>
-CRF のパラメータ推定に <a href="http://www.ece.nwu.edu/~nocedal">Jorge Nocedal</a> 氏が考案した L-BFGS
-と同氏が公開している FORTRAN 実装を使わせていただいております。ありがとうございます。</p>
+CRF의 파라미터 추정에는 <a href="http://www.ece.nwu.edu/~nocedal">Jorge Nocedal</a>씨가 고안한 L-BFGS
+와 같은 분이 공개한 FORTRAN 구현을 사용하고 있습니다. 감사합니다.</p>
 
 <p><a
 href="http://www.ece.northwestern.edu/~nocedal/lbfgs.html">http://www.ece.northwestern.edu/~nocedal/lbfgs.html</a></p>
@@ -584,6 +583,10 @@ href="http://www.ece.northwestern.edu/~nocedal/lbfgs.html">http://www.ece.northw
 <li>D.C. Liu and J. Nocedal. On the Limited Memory Method for Large Scale
 Optimization (1989), Mathematical Programming B, 45, 3, pp. 503-528.
 </ul>
+
+<p>
+(* 번역에 오류가 있을 수 있습니다. https://github.com/MerHS/mecab-ko-doc에 올려주시기 바랍니다. *)
+</p>
 
 </p>
 </body>
